@@ -20,8 +20,30 @@ addTask.addEventListener('click', function(){
     checkButton.classList.add('checkTask');
     task.appendChild(checkButton);
 
-    let deletButton = document.createElement("button");
-    deletButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
-    deletButton.classList.add('deleteTask');
-    task.appendChild(deletButton);
-})
+    let deleteButton = document.createElement("button");
+    deleteButton.innerHTML =  '<i class="fa-solid fa-trash-can"></i>';
+    deleteButton.classList.add('deleteTask');
+    task.appendChild(deleteButton);
+
+    if(inputTask.value === ""){
+        alert('please Enter a Task');
+    } else {
+        taskContainer.appendChild(task);
+    }
+
+    inputTask.value = "" ;
+
+    checkButton.addEventListener('click', function(){
+
+        checkButton.parentElement.style.textDecoration = "line-through";
+    });
+
+    deleteButton.addEventListener('click', function(e){
+
+        let target = e.target;
+
+        target.parentElement.parentElement.remove();
+    })
+
+
+});
